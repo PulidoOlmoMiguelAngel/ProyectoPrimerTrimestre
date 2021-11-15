@@ -361,15 +361,14 @@ db.componentes.aggregate([
    Queremos saber el valor total de nuestro almacen por categorias.
 */
 db.componentes.aggregate([
-   {$group: 
-      {_id: null, 
+   {$project: 
+      {"producto":1, 
+      "modelo": 1,
          total: 
-            {$sum:
                {$multiply: 
                   ["$precio", 
                   "$tienda.stock"]
-               }
-            }
+               } 
       }
    }
 ])
